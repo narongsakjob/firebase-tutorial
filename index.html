@@ -14,7 +14,7 @@
     </div>
 
     <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+    <script src="js/firebase.js"></script>
     <script>
         $(function() {
             var input = $('input');
@@ -43,10 +43,13 @@
                     var comments = snapshot.val();
                     var i = 1;
 
-                    $.each(comments, function(index, c) { 
-                        addToList(parseInt(i) + ': ' + c);
-                        i++;
-                    })
+                    ul.empty();
+                    if( comments != null ) {
+                        $.each(comments, function(index, c) { 
+                            addToList(parseInt(i) + ': ' + c);
+                            i++;
+                        })
+                    }
                 });
             }
 
