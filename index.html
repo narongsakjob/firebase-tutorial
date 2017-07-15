@@ -16,9 +16,9 @@
         <input name="salary" type="text" class="form-control" placeholder="Salary in here">
         <br/>
         <div class="form-inline">
-            <a href="#" class="btn btn-primary">Push</a>
-            <a href="" class="btn btn-warning">Set</a>
-            <a href="" class="btn btn-danger">Delete</a>
+            <a id="push" href="#" class="btn btn-primary">Push</a>
+            <a id="set" href="#" class="btn btn-warning">Set</a>
+            <a id="delete" href="#" class="btn btn-danger">Delete</a>
         </div>
     </div>
 
@@ -34,6 +34,7 @@
             };
             firebase.initializeApp(config);
             var commentsRef = firebase.database().ref('/').child('comments');
+            var customersRef = firebase.database().ref('/').child('customers');
             listenToFirebase();
 
             button.click(function() {
@@ -61,6 +62,18 @@
                     }
                 });
             }
+
+            $('#push').on('click', function() {
+                var name = $('input[name = "name"]').val();
+                var age = $('input[name = "age"]').val();
+                var salary = $('input[name="salary"]').val();
+
+                customer = { name: name, age: age, salary: salary };
+
+                console.log(customer);
+                customersRef.push(customer);
+
+            });
 
         });
     </script>
