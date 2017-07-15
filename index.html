@@ -70,9 +70,22 @@
 
                 customer = { name: name, age: age, salary: salary };
 
-                console.log(customer);
                 customersRef.push(customer);
 
+            });
+
+            $('#set').on('click', function() {
+                var name = $('input[name = "name"]').val();
+                var age = $('input[name = "age"]').val();
+                var salary = $('input[name="salary"]').val();
+                customer = { name: name, age: age, salary: salary };
+                var id;
+                customersRef.once('value', function(snapshot) {
+                    id = snapshot.numChildren()-1;
+                    customerRef = customersRef.child(id);
+                    customerRef.set(customer);
+                })
+                
             });
 
         });
