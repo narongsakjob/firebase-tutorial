@@ -7,18 +7,27 @@
 <body>
     <div class="container">
         <h2>Introduction to firebase</h2>
-        <input type="text" class="form-control" placeholder="Type in here">
-        <a href="#" class="btn btn-primary">Submit</a>
+        <input name="type" type="text" class="form-control" placeholder="Type in here">
+        <a href="#" id="type" class="btn btn-primary">Submit</a>
         <ul class="list-group">
         </ul>
+        <input name="name" type="text" class="form-control" placeholder="Name in here">
+        <input name="age" type="text" class="form-control" placeholder="Age in here">
+        <input name="salary" type="text" class="form-control" placeholder="Salary in here">
+        <br/>
+        <div class="form-inline">
+            <a href="#" class="btn btn-primary">Push</a>
+            <a href="" class="btn btn-warning">Set</a>
+            <a href="" class="btn btn-danger">Delete</a>
+        </div>
     </div>
 
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/firebase.js"></script>
     <script>
         $(function() {
-            var input = $('input');
-            var button = $('a');
+            var input = $('input[name="type"]');
+            var button = $('#type');
             var ul = $('ul');
             var config = {
                 databaseURL: "https://fir-tutorial-4a204.firebaseio.com/"
